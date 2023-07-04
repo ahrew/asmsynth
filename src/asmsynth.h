@@ -183,7 +183,7 @@
 
 #ifdef enable_motor
 	volatile char sMotorA;
-	#if channel == 2
+	#if outputtype == 2
 		volatile char sMotorB;
 	#endif
 #endif
@@ -227,7 +227,7 @@ extern "C"
 
 	#ifdef enable_motor
 		void motorA(char a);
-		#if channel == 2
+		#if outputtype == 2
 			void motorB(char b);
 		#endif
 	#endif
@@ -418,9 +418,9 @@ startinterrupt();
 #define end_interrupt \
 endinterrupt();}
 
-//na przysz³oœæ:
-//dodaæ atrybut przerwania (przenoszenie rejestrów na stos)
-//dodaæ osobny stos dla drugiego programu
+//na przyszÂ³oÅ“Ã¦:
+//dodaÃ¦ atrybut przerwania (przenoszenie rejestrÃ³w na stos)
+//dodaÃ¦ osobny stos dla drugiego programu
 #ifndef disable_secondProgram
 #define start_secondProgram \
 extern "C" void secondprogram() __attribute__ ((naked));\
