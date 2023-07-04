@@ -52,7 +52,7 @@ void startinterrupt()
 			C_Cpin1
 			"sbrs r25, 1\n"
 			C_Cpin2
-			#if channel == 2
+			#if outputtype == 2
 				"sbrs r25, 2\n"
 				C_Cpin3
 				"sbrs r25, 3\n"
@@ -62,7 +62,7 @@ void startinterrupt()
 			C_Spin1
 			"sbrc r25, 1\n"
 			C_Spin2
-			#if channel == 2
+			#if outputtype == 2
 				"sbrc r25, 2\n"
 				C_Spin3
 				"sbrc r25, 3\n"
@@ -150,7 +150,7 @@ void endinterrupt()
 			"mulsu r20, r21\n"
 			"mov r20, r1\n"
 		#endif
-		#if channel == 2
+		#if outputtype == 2
 			"mov r21, r20\n"
 		#endif
 		#ifdef enable_motor
@@ -162,7 +162,7 @@ void endinterrupt()
 			"mulsu r20, r22\n"
 			"mov r20, r1\n"
 			"add r20, r23\n"
-			#if channel == 2
+			#if outputtype == 2
 				"lds r22, (sMotorB)\n"
 				"mov r23, r22\n"
 				"sbrs r22, 7\n"
@@ -177,7 +177,7 @@ void endinterrupt()
 		#if mode == 1
 			"subi r20, 128\n"
 			C_PWM1_20
-			#if channel == 2
+			#if outputtype == 2
 				"subi r21, 128\n"
 				C_PWM2_21
 			#endif
@@ -189,11 +189,11 @@ void endinterrupt()
 			"lsl r20\n"
 			C_PWM1_20
 			"ldi r22, 2\n"
-			#if channel == 1
+			#if outputtype == 1
 				"sts (sPin), r22\n"
 				"rjmp stos\n"
 			#endif
-			#if channel == 2
+			#if outputtype == 2
 				"rjmp channel2\n"
 			#endif
 			"plus1:\n"
@@ -202,19 +202,19 @@ void endinterrupt()
 			"lsl r20\n"
 			C_PWM1_20
 			"ldi r22, 1\n"
-			#if channel == 1
+			#if outputtype == 1
 				"sts (sPin), r22\n"
 				"rjmp stos\n"
 			#endif
-			#if channel == 2
+			#if outputtype == 2
 				"rjmp channel2\n"
 			#endif
 			"zero1:\n"
 			C_PWM1_20
-			#if channel == 1
+			#if outputtype == 1
 				"sts (sPin), r20\n"
 			#endif
-			#if channel == 2
+			#if outputtype == 2
 				"clr r22\n"
 				"channel2:\n"
 				"sbrs r21, 7\n"
@@ -246,10 +246,10 @@ void endinterrupt()
 			C_PWM2_20
 			"clr r20\n"
 			C_PWM1_20
-			#if channel == 1
+			#if outputtype == 1
 				"rjmp stos\n"
 			#endif
-			#if channel == 2
+			#if outputtype == 2
 				"rjmp channel2\n"
 			#endif
 			"plus1:\n"
@@ -257,7 +257,7 @@ void endinterrupt()
 			C_PWM1_20
 			"clr r20\n"
 			C_PWM2_20
-			#if channel == 2
+			#if outputtype == 2
 				"channel2:\n"
 				"sbrs r21, 7\n"
 				"rjmp plus2\n"
