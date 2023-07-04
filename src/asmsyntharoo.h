@@ -570,6 +570,6 @@ asm volatile("jmp playMusic\n");}
 
 
 #define MusicSynthesizer_c
-#include <asmsynth.c>
+#include <asmsyntharoo.c>
 #undef MusicSynthesizer_c
 #endif
