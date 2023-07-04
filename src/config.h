@@ -8,7 +8,7 @@
 //main setting:
 	#define polyphony 16
 	#define mode 1
-	#define channel 1
+	#define outputtype 1
 
 //io setting:
 	#define timerInterrupt 2
