@@ -7,7 +7,7 @@
 
 
 synthSetup	KEYWORD1
-asmsynth	KEYWORD1
+asmsyntharoo	KEYWORD1
 
 
 
