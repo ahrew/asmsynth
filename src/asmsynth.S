@@ -15,7 +15,7 @@
 
 #ifdef enable_motor
 	.extern sMotorA
-	#if channel == 2
+	#if outputtype == 2
 		.extern sMotorB
 	#endif
 #endif
@@ -109,7 +109,7 @@ ret
 
 
 
-//ewentualnie zapisaæ pc przez stos mikrkontrolera
+//ewentualnie zapisaÃ¦ pc przez stos mikrkontrolera
 #ifndef disable_secondProgram
 	.extern secondprogram
 	setPC:
@@ -168,7 +168,7 @@ asm_STI_25
 	clr r24
 #endif
 rcall setA
-#if channel == 2
+#if outputtype == 2
 	#ifdef enable_motor
 		lds r24, (sMotorB)
 	#endif
@@ -189,7 +189,7 @@ ret
 	rcall setA
 	ret
 
-	#if channel == 2
+	#if outputtype == 2
 		.global motorB
 		motorB:
 		//bst r25, 7
@@ -250,7 +250,7 @@ ret
 
 
 
-#if channel == 2
+#if outputtype == 2
 	setB:
 	#if mode == 1
 		subi r24, 128
