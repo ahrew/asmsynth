@@ -1,5 +1,5 @@
-# asmsynth
-originally by ezasm  
+# asmsyntharoo
+fork of asmsynth by ezasm  
 background:  
 I already built and am quite happy with the Peter Zimon SFM, but was bummed by it being a monosynth.  
 i discovered this project through youtube, while searching for arduino polyphony solutions  
