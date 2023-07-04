@@ -24,7 +24,7 @@
 
 //additional options:
 	//#define disable_volume
-	//#define disable_secondProgram
+	#define disable_secondProgram
 	//#define enable_highSamplingRate
 	//#define enable_motor
 	//#define enable_ADC
