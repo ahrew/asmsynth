@@ -58,8 +58,8 @@
 #error "You must define the 'mode' with using these numbers: 1, 2 or 3."
 #endif
 
-#if channel != 1 && channel != 2
-#error "You must define the 'channel' (number of channels) with using these numbers: 1 or 2."
+#if outputtype != 1 && outputtype != 2
+#error "You must define the 'outputtype' (number of channels) with using these numbers: 1 or 2."
 #endif
 
 
@@ -73,13 +73,13 @@
 #endif
 
 
-#if channel == 2 || mode == 3
+#if outputtype == 2 || mode == 3
 	#if !defined(PWM2Macro) && !defined(PWM2) || PWM2 != 3 && PWM2 != 5 && PWM2 != 6 && PWM2 != 9 && PWM2 != 10 && PWM2 != 11
 	#error "You must define the 'PWM2' with using these numbers: 3, 5, 6, 9, 10 or 11."
 	#endif
 #endif
 
-#if channel == 2 && mode == 3
+#if outputtype == 2 && mode == 3
 	#if !defined(PWM3Macro) && !defined(PWM3) || PWM3 != 3 && PWM3 != 5 && PWM3 != 6 && PWM3 != 9 && PWM3 != 10 && PWM3 != 11
 	#error "You must define the 'PWM3' with using these numbers: 3, 5, 6, 9, 10 or 11."
 	#endif
@@ -98,7 +98,7 @@
 	#error "You must define the 'pin2' with using numbers in the range: 2-13."
 	#endif
 	
-	#if channel == 2
+	#if outputtype == 2
 		#if !defined(pin3Macro) && !defined(pin3) || pin3 < 2 || pin3 > 13
 		#error "You must define the 'pin3' with using numbers in the range: 2-13."
 		#endif
@@ -111,13 +111,13 @@
 
 
 
-#if channel == 2 || mode == 3
+#if outputtype == 2 || mode == 3
 	#if !defined(PWM1Macro) && !defined(PWM2Macro) && PWM1 == PWM2
 	#error "You can not use the same pins for PWM1 and PWM2."
 	#endif
 #endif
 
-#if channel == 2 && mode == 3
+#if outputtype == 2 && mode == 3
 		#if !defined(PWM1Macro) && !defined(PWM3Macro) && PWM1 == PWM3
 		#error "You can not use the same pins for PWM1 and PWM3."
 		#endif
@@ -152,7 +152,7 @@
 	#error "You can not use the same pins for pin1 and pin2."
 	#endif
 	
-	#if channel == 2
+	#if outputtype == 2
 		#if !defined(PWM2Macro) && !defined(pin1Macro) && PWM2 == pin1
 		#error "You can not use the same pins for PWM2 and pin1."
 		#endif
@@ -241,7 +241,7 @@
 	#define timer2
 #endif
 
-#if channel == 2 || mode == 3
+#if outputtype == 2 || mode == 3
 	#if PWM2 == 3
 		#define sPin3
 		#define timer2
@@ -268,7 +268,7 @@
 	#endif
 #endif
 
-#if channel == 2 && mode == 3
+#if outputtype == 2 && mode == 3
 	#if PWM3 == 3
 		#define sPin3
 		#define timer2
@@ -397,7 +397,7 @@
 		#define sPin13
 	#endif
 
-	#if channel == 2
+	#if outputtype == 2
 		#if pin3 == 2
 			#define sPin2
 		#endif
@@ -521,7 +521,7 @@
 		#define asm_PWM1_24 sts 0xB3, r24
 	#endif
 #endif
-#if channel == 2 || mode == 3
+#if outputtype == 2 || mode == 3
 	#if !defined(PWM2Macro)
 		#if PWM2 == 3
 			#define C_PWM2_20 "sts 0xB4, r20\n"
@@ -555,7 +555,7 @@
 		#endif
 	#endif
 #endif
-#if channel == 2 && mode == 3
+#if outputtype == 2 && mode == 3
 	#if !defined(PWM3Macro)
 		#if PWM3 == 3
 			#define C_PWM3_21 "sts 0xB4, r21\n"
@@ -758,7 +758,7 @@
 			#define asm_Spin2 sbi 0x05, 5
 		#endif
 	#endif
-	#if channel == 2
+	#if outputtype == 2
 		#if !defined(pin3Macro)
 			#if pin3 == 2
 				#define C_Cpin3 "cbi 0x0B, 2\n"
@@ -922,81 +922,81 @@ NOTATKI
 potrzebne makra/funkcje io:
 
 	(setup)
-	?zapisz ustawienia zegarów					c			r25
-	?zapisz ustawienia pinów					c			-
+	?zapisz ustawienia zegarÃ³w					c			r25
+	?zapisz ustawienia pinÃ³w					c			-
 	=zapisz ustawienia ADC (ADCSRA)				c asm		r25
 
 	(inne)
 	+zapisz ustawienia zegar przerwania			c asm		r25; r25
 	+odczytaj ustawienia zegar przerwania		asm			r25
 	+zapisz PWM									c asm		r21, r20; r24	|
-	+w³¹cz pin									c asm		-				|
-	+wy³acz pin									c asm		-				|
+	+wÂ³Â¹cz pin									c asm		-				|
+	+wyÂ³acz pin									c asm		-				|
 	=zapisz ustawienia ADC (ADMUX)				c asm		r25; r25
 	=odczytaj ustawienia ADC (ADMUX)			asm			r25
-	=odczytaj wartoœæ ADC (ADCH)				c			r16				|
+	=odczytaj wartoÂœÃ¦ ADC (ADCH)				c			r16				|
 
 
-= sta³a definicja (sta³y adres, zostawiæ)
-? ró¿na iloœæ elementów do ustawienia (setup)
+= staÂ³a definicja (staÂ³y adres, zostawiÃ¦)
+? rÃ³Â¿na iloÂœÃ¦ elementÃ³w do ustawienia (setup)
 | wykorzystywane w przerwaniu
 - nie zrobione
 + zrobione
-sprawdziæ rejestry!
+sprawdziÃ¦ rejestry!
 
 
 
 
 
 
-+sprawdzanie u¿ytych makr
++sprawdzanie uÂ¿ytych makr
 
-+sprawdzanie trybu (tryb, iloœæ kana³ów)
++sprawdzanie trybu (tryb, iloÂœÃ¦ kanaÂ³Ã³w)
 	mode (1, 2, 3)
-	channel (1, 2)
+	outputtype (1, 2)
 	
-+sprawdzanie czy potrzebne io zosta³o poprawnie zdefiniowane
-	(b³¹d je¿eli nie zdefiniowano ani definicji ani makra)
-	(osobnie dla ka¿dego pinu/io)
++sprawdzanie czy potrzebne io zostaÂ³o poprawnie zdefiniowane
+	(bÂ³Â¹d jeÂ¿eli nie zdefiniowano ani definicji ani makra)
+	(osobnie dla kaÂ¿dego pinu/io)
 	0-nie zdefiniowano
 	1-zdefiniowano (poprawnie)
 	makro	pin		wynik
-	0		0		b³¹d - brak definicji
+	0		0		bÂ³Â¹d - brak definicji
 	0		1		ok
 	1		0		ok
 	1		1		ok		???
 	
 
-+sprawdzanie czy piny nie pokrywaj¹ siê ze sob¹
-	(je¿eli zdefiniowano pin)
-	(je¿eli kolejny pin zosta³ zdefiniowany to jest on sprawdzany z pozosta³ymi)
++sprawdzanie czy piny nie pokrywajÂ¹ siÃª ze sobÂ¹
+	(jeÂ¿eli zdefiniowano pin)
+	(jeÂ¿eli kolejny pin zostaÂ³ zdefiniowany to jest on sprawdzany z pozostaÂ³ymi)
 	makro	pin		wynik
-	0		0		nie sprawdzaæ tej opcji
-	0		1		sprawdzanie poprawnoœci z innymi pinami
-	1		0		pomiñ sprawdzanie tego pinu
+	0		0		nie sprawdzaÃ¦ tej opcji
+	0		1		sprawdzanie poprawnoÂœci z innymi pinami
+	1		0		pomiÃ± sprawdzanie tego pinu
 	1		1		sprawdzanie numeru z innymi pianmi		???
 
 
-+deklarowanie/w³¹czanie ustawnieñ dla setapu
-	(je¿eli zdefiniowano pin)
++deklarowanie/wÂ³Â¹czanie ustawnieÃ± dla setapu
+	(jeÂ¿eli zdefiniowano pin)
 	makro	pin		wynik
-	0		0		nie sprawdzaæ tej opcji
-	0		1		w³¹cz ustawienie w setapie
-	1		0		nic nierób
-	1		1		w³¹cz ustawienie w setapie (jeœli to mo¿liwe)	???
+	0		0		nie sprawdzaÃ¦ tej opcji
+	0		1		wÂ³Â¹cz ustawienie w setapie
+	1		0		nic nierÃ³b
+	1		1		wÂ³Â¹cz ustawienie w setapie (jeÂœli to moÂ¿liwe)	???
 
 
 +deklarowanie makr
 	makro	pin		wynik
-	0		0		nie sprawdzaæ tej opcji
+	0		0		nie sprawdzaÃ¦ tej opcji
 	0		1		zadeklaruj makro
-	1		0		nic nierób
-	1		1		nic nierób
+	1		0		nic nierÃ³b
+	1		1		nic nierÃ³b
 
 
 
 
-podsumowanie, u¿yte funkcjie (makra):
+podsumowanie, uÂ¿yte funkcjie (makra):
 asm_STI_25
 asm_LTI_25
 
@@ -1039,27 +1039,27 @@ plik S
 
 
 (szkice)
-ustawienia fal (dane wejœciowe):
--tryb ustawienia fali (faza, czêstotliwoœæ, g³oœnoœæ)
+ustawienia fal (dane wejÂœciowe):
+-tryb ustawienia fali (faza, czÃªstotliwoÂœÃ¦, gÂ³oÂœnoÂœÃ¦)
 -numer fali
--wartoœ do zapisania
-void ustawfale([numer fali], [tryb], [wartoœæ])
+-wartoÂœ do zapisania
+void ustawfale([numer fali], [tryb], [wartoÂœÃ¦])
 
-???adres pamiêci liczony w assemblerze lub liczony w c (sta³a/zmienna wartoœæ)???
+???adres pamiÃªci liczony w assemblerze lub liczony w c (staÂ³a/zmienna wartoÂœÃ¦)???
 
 
-w przysz³oœci:
-odczytywanie czystych danych z pamiêci (bez wykonywania instrukcji asm)
+w przyszÂ³oÂœci:
+odczytywanie czystych danych z pamiÃªci (bez wykonywania instrukcji asm)
 -tryb (sprawdzanie trybu):
  -faza
- -czêstotliwoœæ
- -g³oœnoœæ
+ -czÃªstotliwoÂœÃ¦
+ -gÂ³oÂœnoÂœÃ¦
  -czekanie
--zapisanie kolejnych wartoœci do ram
+-zapisanie kolejnych wartoÂœci do ram
   
 
-organizacja pamiêci:
-[tryb - 2B (ew. 3B) | numer fali/iloœæ bajtów czekania - 6B (ew. 5B)] [wartoœæ (hb)] [wartoœæ (lb)]
+organizacja pamiÃªci:
+[tryb - 2B (ew. 3B) | numer fali/iloÂœÃ¦ bajtÃ³w czekania - 6B (ew. 5B)] [wartoÂœÃ¦ (hb)] [wartoÂœÃ¦ (lb)]
 
 
 
