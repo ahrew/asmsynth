@@ -24,7 +24,7 @@ The library in its folder has a configuration file (config.h), there are all set
 #define mode [value] - Variants of used pins. There are 3 output modes: The first mode is one PWM output. The second and third modes are for H-bridge. The second mode is 1 PWM + 2 pins, the third: 2 PWM.
 
 #define channel [value] - Number of used outputs, with a value of 2 the number of used pins will be doubled, with a value of 1 will remain unchanged. By setting the value to 2 and enabling motor support (enable_motor, description below), you can control their power separately, without this function enabled, the pins and signals will only be copied.
-
+NOTE - in this fork, channel is replaced by outputtype. this change is intended to remove conficts with the MIDI library, which also includes a variable called channel.
 
 -INPUT / OUTPUT SETTINGS:
 
