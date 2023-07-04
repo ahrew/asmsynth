@@ -335,7 +335,7 @@ void endinterrupt()
 		"reti\n"
 	);
 }
-
+// waveform math here... need to research assembly if i want to add sin and noise, i have no idea how to interpret this code
 void squareWave()
 {
 	asm volatile
