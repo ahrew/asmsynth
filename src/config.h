@@ -10,7 +10,7 @@
 	#define mode 1
 	#define outputtype 1
 
-//io setting:
+//io setting: since we're using outputtype 1, PWM1 (D11) is our output pin
 	#define timerInterrupt 2
 	#define PWM1 11
 	//#define PWM2 10
