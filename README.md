@@ -1,13 +1,18 @@
 # asmsyntharoo
 fork of asmsynth by ezasm  
-background:  
-I already built and am quite happy with the Peter Zimon SFM, but was bummed by it being a monosynth.  
-i discovered this project through youtube, while searching for arduino polyphony solutions  
-the first method i found involved using one arduino nano for each voice, which didn't seem economical, even though nano clones are only ~$5 each  
-this library seemed like a quick and dirty way to get polyphony out of an arduino nano, and after testing the example programs, i attempted to create a test program for midi integration  
-i created this fork because there is a variable 'channel' in both MIDI and asmsynth libraries, which is causing compile errors  
+i created this fork because there is a variable 'channel' in both MIDI and asmsynth libraries, caused compile errors  
 
-maybe dig into the code and implement sine wave and noise like ezasm planned in the documentation? could be a tall order, i know nothing about assembly.  
+TO DO:  
+- Implement sinWave and noise() in asmsyntharoo.c assembly code  
+- build Monosynth program with note counter  
+- figure out how to get polyphony
+- dissect asmysynth examples to figure out how they used voice and stop functions
+
+IDEAS FOR PROJECTS:  
+- design prototype stripboard with socket for nano, midi input circuit, and onboard fx (5v fuzz? lol)  
+- breadboard pt2399 based effect powered by nano 5v rail  
+- octave up/down switch/button  
+- ability to change waveforms via rotary encoder or switch
 
 original readme:  
 This is audio library and allows you to generate up to 32 voices at the same time. It also allows you to create background music by executing two programs asynchronously.
