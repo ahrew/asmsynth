@@ -4,8 +4,7 @@ i created this fork because there is a variable 'channel' in both MIDI and asmsy
 
 TO DO:  
 - Implement sinWave and noise() in asmsyntharoo.c assembly code  
-- build Monosynth program with note counter  
-- figure out how to get polyphony
+- figure out polyphony
 - dissect asmysynth examples to figure out how they used voice and stop functions
 
 IDEAS FOR PROJECTS:  
